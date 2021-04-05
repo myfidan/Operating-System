@@ -3,7 +3,8 @@
 array: .space 40
 headerMsg: .asciiz "Enter 10 number for sorting: "
 space: .asciiz " "
-
+footerMsg: .asciiz "Array sorted by using Bubble sort: "
+newline: .asciiz "\n"
 	.text
 
 read_numbers:
@@ -48,6 +49,10 @@ exit_sort:
 	jr $ra
 
 print_array:
+	li $v0,4
+    la $a0,footerMsg
+    syscall
+	
 	addi $t0,$0,0
 print_loop:
 	li $v0,1
@@ -63,6 +68,9 @@ print_loop:
 	j print_loop
 
 exit_print_loop:
+	li $v0,4
+    la $a0,newline
+    syscall
 	jr $ra	
 
 main:

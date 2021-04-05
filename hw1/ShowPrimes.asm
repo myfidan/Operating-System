@@ -2,8 +2,8 @@
 
 .data
 	prime:   .asciiz "prime\n"
-	nonPrime: .asciiz "notprime\n"
 	blankSpace: .asciiz " "
+	newline: .asciiz "\n"
 
 	.extern foobar 4
 
@@ -42,7 +42,7 @@ printNotPrime:
     syscall
 
 	li $v0, 4       # syscall 4 (print_str)
-    la $a0, nonPrime     # argument: string
+    la $a0, newline     # argument: string
     syscall 
     jr $ra
 
